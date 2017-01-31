@@ -46,7 +46,7 @@ public class RestService {
 	}
 
 	private HttpServer getServer() throws IllegalArgumentException, NullPointerException, IOException {
-		final ResourceConfig rc = new ResourceConfig().packages("de.pangaea.scholix.consumer.api");
+		final ResourceConfig rc = new ResourceConfig().packages("org.scholix.consumer.api");
 		rc.register(new ExceptionLogger());
 		rc.register(new Binder());
 
