@@ -1,0 +1,101 @@
+{
+  "settings" : {
+    "number_of_shards" : 5,
+    "number_of_replicas" : 0,
+    "analysis" : {
+      "analyzer" : {
+       "default" : {
+        "type" : "custom",
+        "tokenizer" : "standard",
+        "filter" : ["standard", "lowercase"]
+       },
+       "identifier" : {
+        "type" : "custom",
+        "tokenizer" : "keyword",
+        "filter" : ["lowercase"]
+       }
+      }
+     },
+     "query" : {
+      "default_field": null
+     }
+  },
+  "mappings" : {
+    "link" : {
+      "_all" : {
+        "enabled" : false 
+      },
+      "_source" : {
+        "enabled" : true
+      },
+      "dynamic_templates" : [
+        {
+          "obj": {
+            "match_pattern": "regex",
+            "match": "^(source|target|linkProvider)$",
+            "match_mapping_type": "object",
+            "mapping": {
+              "type" : "object",
+              "dynamic" : true,
+              "properties" : {
+                "objectType": {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
+        {
+          "identifier": {
+            "match": "identifier",
+            "match_mapping_type": "string",
+            "mapping": {
+              "type" : "text",
+              "analyzer": "identifier"
+            }
+          }
+        },
+        {
+          "schema": {
+            "match": "schema",
+            "match_mapping_type": "string",
+            "mapping": {
+              "type" : "keyword"
+            }
+          }
+        },
+        {
+          "defaultObj": {
+            "match": "*",
+            "match_mapping_type": "object",
+            "mapping": {
+              "type" : "object",
+              "dynamic" : true
+            }
+          }
+        },
+        {
+          "default": {
+            "match": "*",
+            "mapping": {
+              "type" : "text"
+            }
+          }
+        }
+      ],
+      "properties" : {
+        "relationship" : {
+          "type" : "object",
+          "properties" : {
+            "name": {
+              "type" : "keyword"
+            },
+            "schema": {
+              "type" : "keyword"
+            }
+          }
+        }
+      }
+    }
+  }
+}

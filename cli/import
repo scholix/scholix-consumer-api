@@ -1,0 +1,16 @@
+#!/bin/sh
+
+FILE=$1
+
+# Elasticsearch config
+SERVER=http://localhost:9200
+INDEX=scholix
+TYPE=link
+
+# Tools config (add your install dir, if not in path)
+JQ=jq
+
+curl -s -XDELETE "$SERVER/$INDEX"
+curl -s -XPUT "$SERVER/$INDEX" --data-binary @indexconfig.json
+
+cat $FILE | $JQ --compact-output '.[].link | {"index": {}}, .' | curl -s -XPOST "$SERVER/$INDEX/$TYPE/_bulk" --data-binary @-
