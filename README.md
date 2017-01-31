@@ -17,7 +17,7 @@ mvn package assembly:single
 
 ```
 ES_JAVA_OPTS="-Xms512m -Xmx512m" bin/elasticsearch -d
-cli/import data.json
+cd cli/; ./import data.json; cd ..
 java -jar target/scholix-consumer-api-0.0.1-SNAPSHOT-jar-with-dependencies.jar 2>&1 | tee /tmp/scholix-consumer-api.log &
 ```
 
