@@ -6,7 +6,6 @@ import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.logging.Logger;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.core.UriBuilder;
 
@@ -18,7 +17,6 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.scholix.consumer.api.RestService.InjectedClient;
 
 public class RestService {
 
