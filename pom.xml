@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.pangaea</groupId>
-  <artifactId>pangaea-scholix-consumer-api</artifactId>
+  <groupId>org.scholix</groupId>
+  <artifactId>scholix-consumer-api</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <jersey.version>2.23.2</jersey.version>
@@ -47,7 +47,7 @@
           </descriptorRefs> 
           <archive> 
           	<manifest> 
-              <mainClass>de.pangaea.scholix.consumer.api.RestService</mainClass> 
+              <mainClass>org.scholix.consumer.api.RestService</mainClass> 
             </manifest> 
           </archive> 
         </configuration> 
